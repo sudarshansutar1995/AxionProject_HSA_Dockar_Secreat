@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  telemetry-pod
+  labels:
+    app:  telemetry-pod
+spec:
+  selector:
+    matchLabels:
+      app: telemetry-pod
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: telemetry-pod
+    spec:
+      containers:
+      - name: telemetry-pod
+        image: sudsutar.azurecr.io/tele:v1
+        
+        ports:
+        - containerPort: 8000

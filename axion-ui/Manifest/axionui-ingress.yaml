@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: axion-ui-ingress
+  namespace: default
+
+spec:
+  ingressClassName: azure-application-gateway
+
+  rules:
+    - host: axionui.sudsutar.site
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: axionui-service-pod
+                port:
+                  number: 80

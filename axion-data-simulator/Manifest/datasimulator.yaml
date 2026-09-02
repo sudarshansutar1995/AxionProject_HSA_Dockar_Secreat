@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: datasimulator
+spec:
+  selector:
+    matchLabels:
+      app: datasimulator-service
+  template:
+    metadata:
+      labels:
+        app: datasimulator-service
+    spec:
+      containers:
+      - name: datasimulator-service
+        image: sudsutar.azurecr.io/dasim:v1
+
+        env:
+        - name: API_URL
+          value: "http://ingestion.sudsutar.site/api/v1/telemetry/ingest"
+
+        - name: INTERVAL_SECONDS
+          value: "5"
+
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  ingestion-pod
+  labels:
+    app:  ingestion-pod
+spec:
+  selector:
+    matchLabels:
+      app: ingestion-pod
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app:  ingestion-pod
+    spec:
+      containers:
+      - name:  ingestion-pod
+        image: sudsutar.azurecr.io/ing:v1
+
+        ports:
+        - containerPort: 8000

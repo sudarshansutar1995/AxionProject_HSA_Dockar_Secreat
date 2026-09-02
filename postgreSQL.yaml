@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: postgre-pod
+  labels:
+    app: postgre-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgre-pod
+  template:
+    metadata:
+      labels:
+        app: postgre-pod
+    spec:
+      containers:
+      - name: postgre-pod
+        image:  postgres:18 
+        ports:
+          - containerPort: 5432
+
+        env:
+        - name: POSTGRES_USER
+          value: Akkalkot
+
+        - name: POSTGRES_PASSWORD
+          value: Akkalkot@413216
+
+        - name: POSTGRES_DB
+          value: axiondb
+    

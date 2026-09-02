@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: ingestion-ingress
+
+spec:
+  ingressClassName: azure-application-gateway
+
+  rules:
+    - host: ingestion.sudsutar.site
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ingestion-service-pod
+                port:
+                  number: 80

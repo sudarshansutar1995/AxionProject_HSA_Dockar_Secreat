@@ -1,0 +1,53 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260819204941
+Username: DESKTOP-ET8A1G7\admin
+RunAs User: DESKTOP-ET8A1G7\admin
+Configuration Name: 
+Machine: DESKTOP-ET8A1G7 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "c:\Users\admin\AppData\Local\Programs\Microsoft VS Code\a5b5009513\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+Process ID: 16908
+PSVersion: 5.1.26100.9168
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9168
+BuildVersion: 10.0.26100.9168
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is command.log
+PS F:\DevOpsInsiders\kubernet\kubernet Example\AxionProject -Servicepod> kubectl  apply .\postgreSQL.yaml
+error: Unexpected args: [.\postgreSQL.yaml]
+See 'kubectl apply -h' for help and examples
+PS F:\DevOpsInsiders\kubernet\kubernet Example\AxionProject -Servicepod> kubectl  apply .\postgreSQL.yaml -f
+error: flag needs an argument: 'f' in -f
+See 'kubectl apply --help' for usage.
+PS F:\DevOpsInsiders\kubernet\kubernet Example\AxionProject -Servicepod> kubectl  apply -f .\postgreSQL.yaml 
+pod/postpresql created
+PS F:\DevOpsInsiders\kubernet\kubernet Example\AxionProject -Servicepod> kubectl  apply -f .\UIpostgreSQL.yaml 
+pod/uipostgresql created
+PS F:\DevOpsInsiders\kubernet\kubernet Example\AxionProject -Servicepod> kubectl  apply -f .\postgreSQLservice.yaml
+service/postgresql-service-pod created
+PS F:\DevOpsInsiders\kubernet\kubernet Example\AxionProject -Servicepod> kubectl  apply -f .\UIpostgreSQLservice.yaml
+service/uipostpresql-service-pod created
+PS F:\DevOpsInsiders\kubernet\kubernet Example\AxionProject -Servicepod> kubectl  get pods
+NAME           READY   STATUS    RESTARTS   AGE
+postpresql     1/1     Running   0          51s
+uipostgresql   1/1     Running   0          36s
+PS F:\DevOpsInsiders\kubernet\kubernet Example\AxionProject -Servicepod> kubectl  get svc
+NAME                       TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+kubernetes                 ClusterIP   10.0.0.1      <none>        443/TCP    6m28s
+postgresql-service-pod     ClusterIP   10.0.19.141   <none>        5432/TCP   29s
+uipostpresql-service-pod   ClusterIP   10.0.54.24    <none>        80/TCP     17s
+PS F:\DevOpsInsiders\kubernet\kubernet Example\AxionProject -Servicepod> kubectl  get svc
+NAME                       TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+kubernetes                 ClusterIP   10.0.0.1      <none>        443/TCP    6m35s
+postgresql-service-pod     ClusterIP   10.0.19.141   <none>        5432/TCP   36s
+uipostpresql-service-pod   ClusterIP   10.0.54.24    <none>        80/TCP     24s
+PS F:\DevOpsInsiders\kubernet\kubernet Example\AxionProject -Servicepod> kubectl port-forward  service/postgresql-service-pod 5432:5432
+Forwarding from 127.0.0.1:5432 -> 5432
+Forwarding from [::1]:5432 -> 5432
+error: lost connection to pod
+PS F:\DevOpsInsiders\kubernet\kubernet Example\AxionProject -Servicepod> kubectl port-forward  service/postgresql-service-pod 5432:5432
+error: lost connection to pod

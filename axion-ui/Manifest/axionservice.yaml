@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: axionui-service-pod
+spec:
+  selector:
+    app: axion-ui
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP

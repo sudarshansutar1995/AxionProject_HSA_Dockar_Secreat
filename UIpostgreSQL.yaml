@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: pgaming-pod
+  labels:
+    app: pgaming-pod
+spec:
+  
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pgaming-pod
+  template:
+    metadata:
+      labels:
+        app: pgaming-pod
+    spec:
+      containers:
+      - name: pgaming-pod
+        image: dpage/pgadmin4:latest
+        ports:
+        - containerPort: 80
+        
+        env:
+        - name: PGADMIN_DEFAULT_EMAIL
+          value: admin@gmail.com
+
+        - name: PGADMIN_DEFAULT_PASSWORD
+          value: admin123
