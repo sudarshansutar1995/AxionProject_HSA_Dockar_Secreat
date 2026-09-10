@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: axion-ui-secret
+type: Opaque
+stringData:
+  VITE_API_BASE: "http://telemetry.sudsutar.site"

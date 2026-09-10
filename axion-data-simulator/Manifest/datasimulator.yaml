@@ -13,14 +13,22 @@ spec:
     spec:
       containers:
       - name: datasimulator-service
-        image: sudsutar.azurecr.io/dasim:v1
-
+        image: sudarshan2026.azurecr.io/datasimulator:z1 
         env:
         - name: API_URL
-          value: "http://ingestion.sudsutar.site/api/v1/telemetry/ingest"
+          valueFrom:
+            secretKeyRef:
+              name: simulator-secret
+              key: API_URL
 
         - name: INTERVAL_SECONDS
-          value: "5"
+          valueFrom:
+            secretKeyRef:
+              name: simulator-secret
+              key: INTERVAL_SECONDS
+
 
         ports:
         - containerPort: 8080
+
+      

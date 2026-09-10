@@ -1,0 +1,11 @@
+
+apiVersion: v1
+kind: Secret
+
+metadata:
+  name: ingestion-secret
+
+type: Opaque
+
+stringData:
+  DATABASE_URL: "postgresql://Akkalkot:Akkalkot%40413216@postgresql-service-pod:5432/axiondb"

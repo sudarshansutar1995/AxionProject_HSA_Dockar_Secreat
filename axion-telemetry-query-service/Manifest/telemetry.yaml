@@ -16,7 +16,23 @@ spec:
     spec:
       containers:
       - name: telemetry-pod
-        image: sudsutar.azurecr.io/tele:v1
+        image: sudarshan2026.azurecr.io/telemetry:z2
         
         ports:
         - containerPort: 8000
+        
+        resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: ingestion-secret
+              key: DATABASE_URL

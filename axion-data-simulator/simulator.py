@@ -8,8 +8,8 @@ from datetime import datetime, timezone
 # Configuration
 # ---------------------------------------------------------------------------
 # Point to the ingestion service
-API_URL = os.getenv("API_URL", "http://ingestion.sudsutar.site/api/v1/telemetry/ingest")
-INTERVAL_SECONDS = int(os.getenv("INTERVAL_SECONDS", "5"))
+API_URL = os.environ["API_URL"]
+INTERVAL_SECONDS = int(os.environ["INTERVAL_SECONDS"])
 
 # ---------------------------------------------------------------------------
 # Device Catalog

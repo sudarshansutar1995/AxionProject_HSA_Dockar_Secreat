@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: ingestion-pod
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -16,7 +16,23 @@ spec:
     spec:
       containers:
       - name:  ingestion-pod
-        image: sudsutar.azurecr.io/ing:v1
+        image: sudarshan2026.azurecr.io/ingestion:z2
 
         ports:
         - containerPort: 8000
+
+        resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: ingestion-secret
+              key: DATABASE_URL

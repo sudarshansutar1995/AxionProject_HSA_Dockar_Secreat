@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: simulator-secret
+type: Opaque
+stringData:
+  API_URL: "http://ingestion.sudsutar.site/api/v1/telemetry/ingest"
+  INTERVAL_SECONDS: "5"
